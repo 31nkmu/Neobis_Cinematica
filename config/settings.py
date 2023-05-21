@@ -47,6 +47,11 @@ INSTALLED_APPS = [
 
     # models
     'applications.account',
+    'applications.cinemas',
+    'applications.feedback',
+    'applications.movies',
+    'applications.rooms',
+    'applications.tickets',
 
     # lib
     'rest_framework',
@@ -117,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'ru-Ru'
 
 TIME_ZONE = 'Asia/Bishkek'
 

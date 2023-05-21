@@ -36,8 +36,9 @@ class UserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
-    is_active = models.BooleanField(default=False)
-    activation_code = models.CharField(max_length=128, blank=True)
+    is_active = models.BooleanField('Активный', default=False)
+    activation_code = models.CharField('Активационный код', max_length=128, blank=True)
+    is_admin = models.BooleanField('Админ', default=False)
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = 'email'
