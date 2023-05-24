@@ -7,7 +7,8 @@ User = get_user_model()
 
 
 class Movie(models.Model):
-    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='movies')
+    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='movies', verbose_name='Кинотеатр')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='movies', verbose_name='Владелец')
 
     title = models.CharField('Название', max_length=120)
     description = models.TextField('Описание', blank=True, null=True)
