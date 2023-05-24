@@ -24,6 +24,7 @@ class Room(models.Model):
 
 
 class Seat(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='seats', verbose_name='Владелец')
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='seats', verbose_name='Зал')
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='seats', verbose_name='Кинотеатр')
 
