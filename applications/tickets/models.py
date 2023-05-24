@@ -15,7 +15,6 @@ class Ticket(models.Model):
     seat = models.ForeignKey(Seat, related_name='tickets', on_delete=models.CASCADE, verbose_name='Место')
     owner = models.ForeignKey(User, related_name='tickets', on_delete=models.CASCADE, verbose_name='Покупатель')
 
-    amount = models.IntegerField(default=1)
     purchase_data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

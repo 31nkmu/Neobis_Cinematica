@@ -1,4 +1,4 @@
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.viewsets import ModelViewSet
 
 from applications.movies.permissions import IsAdminOrReadOnly
@@ -18,7 +18,7 @@ class RoomViewSet(ModelViewSet):
 class SeatViewSet(ModelViewSet):
     serializer_class = SeatSerializer
     queryset = Seat.objects.all()
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
