@@ -9,6 +9,11 @@ User = get_user_model()
 
 
 class Ticket(models.Model):
+    TICKET_TYPE = (
+        ('children', 'children'),
+        ('student', 'student'),
+        ('adult', 'adult'),
+    )
     movie = models.ForeignKey(Movie, related_name='tickets', on_delete=models.CASCADE, verbose_name='Фильм')
     cinema = models.ForeignKey(Cinema, related_name='tickets', on_delete=models.CASCADE, verbose_name='Кинотеатр')
     room = models.ForeignKey(Room, related_name='tickets', on_delete=models.CASCADE, verbose_name='Зал')
@@ -16,6 +21,7 @@ class Ticket(models.Model):
     owner = models.ForeignKey(User, related_name='tickets', on_delete=models.CASCADE, verbose_name='Покупатель')
 
     purchase_data = models.DateTimeField(auto_now_add=True)
+    ticket_type = models.CharField(choices=TICKET_TYPE)
 
     def __str__(self):
         return f'{self.cinema} -> {self.movie}'

@@ -39,6 +39,8 @@ class CustomUser(AbstractUser):
     is_active = models.BooleanField('Активный', default=False)
     activation_code = models.CharField('Активационный код', max_length=128, blank=True)
     is_admin = models.BooleanField('Админ', default=False)
+    card_number = models.CharField(max_length=16)
+    card_balance = models.DecimalField(max_digits=10, decimal_places=2)
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = 'email'
