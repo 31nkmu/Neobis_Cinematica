@@ -8,9 +8,7 @@ User = get_user_model()
 
 
 class Room(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rooms', verbose_name='Владелец')
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='rooms', verbose_name='Кинотеатр')
-    movie = models.ManyToManyField(Movie, verbose_name='Фильм')
 
     number = models.IntegerField('Зал')
     title = models.CharField('Название', max_length=120)
@@ -23,3 +21,18 @@ class Room(models.Model):
     class Meta:
         verbose_name = 'Зал'
         verbose_name_plural = 'Залы'
+
+
+class Seat(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='seats', verbose_name='Зал')
+    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE, related_name='seats', verbose_name='Кинотеатр')
+
+    place = models.IntegerField('Ряд')
+    row = models.IntegerField('Место')
+
+    def __str__(self):
+        return f'ряд {self.place} место {self.row}'
+
+    class Meta:
+        verbose_name = 'Место'
+        verbose_name_plural = 'Места'
